@@ -1,22 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AbcBank
 {
-    public class Transaction
-    {
-        public readonly double amount;
 
-        private DateTime transactionDate;
+    //Use interface so that transactions can ba mocked in unit tests
+    public interface ITransaction
+    {
+        double Amount { get; }
+        DateTime TransactionDate { get; }
+    }
+
+    public class Transaction : ITransaction
+    {
+        private readonly double _amount;
+        private readonly DateTime _transactionDate;
 
         public Transaction(double amount)
         {
-            this.amount = amount;
-            this.transactionDate = DateProvider.getInstance().now();
+            this._amount = amount;
+            this._transactionDate = DateProvider.GetInstance().Now();
         }
 
+        public double Amount
+        {
+            get { return _amount;  }
+        }
+
+        public DateTime TransactionDate
+        {
+            get { return _transactionDate; }
+        }
     }
 }

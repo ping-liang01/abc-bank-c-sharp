@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AbcBank.Test
 {
@@ -11,10 +6,11 @@ namespace AbcBank.Test
     public class TransactionTest
     {
         [Test]
-        public void transaction()
+        public void ShouldTransactionBeCorrect()
         {
             Transaction t = new Transaction(5);
             Assert.AreEqual(true, t is Transaction);
+            Assert.AreEqual(5, t.Amount);
         }
     }
 }
